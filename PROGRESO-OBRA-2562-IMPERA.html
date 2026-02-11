@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Progreso de Obra - IMPERA</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(180deg, #0a1628 0%, #1a2d4a 50%, #0d1a2d 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.03);
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,160,227,0.2);
+            overflow: hidden;
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.4),
+                0 0 100px rgba(0,160,227,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, rgba(0,160,227,0.15) 0%, rgba(0,160,227,0.05) 100%);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,160,227,0.1) 0%, transparent 60%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .logo-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo-text {
+            font-size: 3.5em;
+            font-weight: 800;
+            color: #00A0E3;
+            letter-spacing: 5px;
+            text-shadow: 0 0 30px rgba(0,160,227,0.5);
+        }
+        
+        .logo-subtitle {
+            font-size: 0.75em;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 3px;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+        
+        .obra-info {
+            background: linear-gradient(90deg, rgba(0,160,227,0.3), rgba(0,160,227,0.1));
+            padding: 20px 30px;
+            text-align: center;
+            border-top: 1px solid rgba(0,160,227,0.3);
+            border-bottom: 1px solid rgba(0,160,227,0.3);
+        }
+        
+        .obra-codigo {
+            font-size: 0.8em;
+            color: #00A0E3;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        
+        .obra-nombre {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-top: 5px;
+            background: linear-gradient(90deg, #fff, #00A0E3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        /* Estado general - UN SOLO indicador grande */
+        .estado-general {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .estado-general h2 {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 25px;
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .estado-badge-grande {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .estado-badge-grande.no-iniciado {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .estado-badge-grande.iniciado {
+            background: rgba(254,202,87,0.15);
+            color: #feca57;
+            border: 2px solid rgba(254,202,87,0.4);
+            box-shadow: 0 0 30px rgba(254,202,87,0.2);
+        }
+        
+        .estado-badge-grande.en-ejecucion {
+            background: rgba(0,160,227,0.15);
+            color: #00A0E3;
+            border: 2px solid rgba(0,160,227,0.4);
+            box-shadow: 0 0 30px rgba(0,160,227,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Efecto shimmer que pasa por encima */
+        .estado-badge-grande.en-ejecucion::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(0,160,227,0.3) 50%,
+                transparent 100%
+            );
+            animation: shimmer 2s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .estado-badge-grande.finalizado {
+            background: rgba(29,209,161,0.15);
+            color: #1dd1a1;
+            border: 2px solid rgba(29,209,161,0.4);
+            box-shadow: 0 0 30px rgba(29,209,161,0.3);
+        }
+        
+        .estado-icono-grande {
+            font-size: 1.2em;
+        }
+        
+        .fecha-actualizacion {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9em;
+        }
+        
+        .fecha-actualizacion .fecha-icono {
+            font-size: 1.1em;
+        }
+        
+        .fecha-actualizacion .fecha-label {
+            color: rgba(255,255,255,0.6);
+            font-weight: 500;
+        }
+        
+        .fecha-actualizacion .fecha-valor {
+            color: #00d4ff;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(0,212,255,0.5);
+        }
+        
+        .seccion {
+            margin-bottom: 35px;
+        }
+        
+        .seccion-titulo {
+            color: #00A0E3;
+            font-size: 0.9em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(0,160,227,0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Tareas con barra visual */
+        .tarea {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .tarea:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(0,160,227,0.3);
+            transform: translateX(5px);
+        }
+        
+        .tarea-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .tarea-nombre {
+            font-weight: 600;
+            font-size: 0.95em;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        /* Badge de estado */
+        .tarea-estado {
+            font-size: 0.7em;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        
+        .tarea-estado.no-iniciado {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .tarea-estado.iniciado {
+            background: rgba(254,202,87,0.2);
+            color: #feca57;
+        }
+        
+        .tarea-estado.en-ejecucion {
+            background: rgba(0,160,227,0.2);
+            color: #00A0E3;
+        }
+        
+        .tarea-estado.finalizado {
+            background: rgba(29,209,161,0.2);
+            color: #1dd1a1;
+        }
+        
+        /* Barra de progreso visual - SIN porcentaje numérico */
+        .barra-contenedor {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .barra-progreso {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+        
+        /* No iniciado: barra vacía */
+        .tarea[data-estado="no-iniciado"] .barra-progreso {
+            width: 0%;
+            background: transparent;
+        }
+        
+        /* Iniciado: barra pequeña amarilla */
+        .tarea[data-estado="iniciado"] .barra-progreso {
+            width: 25%;
+            background: linear-gradient(90deg, #feca57, #f8b739);
+        }
+        
+        /* En ejecución: barra media azul */
+        .tarea[data-estado="en-ejecucion"] .barra-progreso {
+            width: 60%;
+            background: linear-gradient(90deg, #00A0E3, #00d4ff);
+        }
+        
+        /* Finalizado: barra completa verde */
+        .tarea[data-estado="finalizado"] .barra-progreso {
+            width: 100%;
+            background: linear-gradient(90deg, #1dd1a1, #10ac84);
+        }
+        
+        /* Resumen - Compacto */
+        .resumen-estados {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .estado-card {
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 15px 8px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .estado-card:hover {
+            background: rgba(255,255,255,0.07);
+            transform: translateY(-2px);
+        }
+        
+        .estado-icono-card {
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+        
+        .estado-numero {
+            font-size: 1.6em;
+            font-weight: 800;
+            line-height: 1;
+        }
+        
+        .estado-label-card {
+            font-size: 0.55em;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 6px;
+        }
+        
+        .estado-card.no-iniciado .estado-numero { color: rgba(255,255,255,0.4); }
+        .estado-card.iniciado .estado-numero { color: #feca57; }
+        .estado-card.en-ejecucion .estado-numero { color: #00A0E3; }
+        .estado-card.finalizado .estado-numero { color: #1dd1a1; }
+        
+        .btn-fotos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #00A0E3, #0088c2);
+            color: white;
+            text-align: center;
+            padding: 20px 35px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1em;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,160,227,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-fotos:hover {
+            background: linear-gradient(135deg, #00b4ff, #00A0E3);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,160,227,0.4);
+        }
+        
+        .btn-fotos svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .footer {
+            background: rgba(0,0,0,0.2);
+            padding: 25px 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .footer-brand {
+            color: #00A0E3;
+            font-weight: 700;
+            font-size: 0.9em;
+            letter-spacing: 2px;
+        }
+        
+        .footer-contacto {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8em;
+            margin-top: 8px;
+        }
+        
+        .footer-contacto a {
+            color: #00A0E3;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .logo-text {
+                font-size: 2.5em;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            .estado-badge-grande {
+                padding: 15px 25px;
+                font-size: 1em;
+            }
+            
+            .tarea-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .resumen-estados {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="logo-container">
+<div class="logo-text">IMPERA</div>
+</div>
+<div class="logo-subtitle">Solucionando Construcciones</div>
+</div>
+<div class="obra-info">
+<div class="obra-codigo">OBRA 2562</div>
+<div class="obra-nombre">CP FONTE DOS MOUROS - ADM VIVEIRO ASESORES</div>
+</div>
+<div class="content">
+<!-- ESTADO GENERAL: Un solo badge grande y claro -->
+<div class="estado-general">
+<h2>Estado de la Obra</h2>
+<!-- Cambiar la clase según el estado: no-iniciado / iniciado / en-ejecucion / finalizado -->
+<div class="estado-badge-grande en-ejecucion">
+<span class="estado-icono-grande">⚡</span>
+<span>En ejecución</span>
+</div>
+<div class="fecha-actualizacion">
+<span class="fecha-icono">🔄</span>
+<span class="fecha-label">Última actualización:</span>
+<span class="fecha-valor">3 de Febrero de 2026</span>
+</div>
+</div>
+<!-- DETALLE POR PARTIDA -->
+<div class="seccion">
+<h3 class="seccion-titulo">
+<span>📍</span> Detalle por Partida
+                </h3>
+<!-- FINALIZADO -->
+
+<!-- EN EJECUCIÓN -->
+
+<!-- INICIADO -->
+
+<!-- NO INICIADO -->
+
+<div class="tarea" data-estado="finalizado"><div class="tarea-header"><span class="tarea-nombre">5H FILTRACIÓN 1</span><span class="tarea-estado finalizado">Finalizado</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="en-ejecucion"><div class="tarea-header"><span class="tarea-nombre">5H + 4H + 3H FILTRACIÓN 2</span><span class="tarea-estado en-ejecucion">En ejecución</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="finalizado"><div class="tarea-header"><span class="tarea-nombre">6B</span><span class="tarea-estado finalizado">Finalizado</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="en-ejecucion"><div class="tarea-header"><span class="tarea-nombre">6D</span><span class="tarea-estado en-ejecucion">En ejecución</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="finalizado"><div class="tarea-header"><span class="tarea-nombre">PORTAL 26B C.ALONSO PÉREZ</span><span class="tarea-estado finalizado">Finalizado</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="finalizado"><div class="tarea-header"><span class="tarea-nombre">PATIO 26B C.ALONSO PÉREZ + 7A</span><span class="tarea-estado finalizado">Finalizado</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="finalizado"><div class="tarea-header"><span class="tarea-nombre">9B</span><span class="tarea-estado finalizado">Finalizado</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="en-ejecucion"><div class="tarea-header"><span class="tarea-nombre">8D + 8E + 8F</span><span class="tarea-estado en-ejecucion">En ejecución</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="finalizado"><div class="tarea-header"><span class="tarea-nombre">26A C.ALONSO PÉREZ ESCALERAS</span><span class="tarea-estado finalizado">Finalizado</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="en-ejecucion"><div class="tarea-header"><span class="tarea-nombre">4H + 4G (PROBLEMA 1)</span><span class="tarea-estado en-ejecucion">En ejecución</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="no-iniciado"><div class="tarea-header"><span class="tarea-nombre">4G (PROBLEMA 2)</span><span class="tarea-estado no-iniciado">No iniciado</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="en-ejecucion"><div class="tarea-header"><span class="tarea-nombre">6E (PROBLEMA 1)</span><span class="tarea-estado en-ejecucion">En ejecución</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="finalizado"><div class="tarea-header"><span class="tarea-nombre">6E (PROBLEMA 2)</span><span class="tarea-estado finalizado">Finalizado</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="en-ejecucion"><div class="tarea-header"><span class="tarea-nombre">6A CHIMENEA</span><span class="tarea-estado en-ejecucion">En ejecución</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="en-ejecucion"><div class="tarea-header"><span class="tarea-nombre">PORTAL 21-23-25</span><span class="tarea-estado en-ejecucion">En ejecución</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div><div class="tarea" data-estado="finalizado"><div class="tarea-header"><span class="tarea-nombre">3C</span><span class="tarea-estado finalizado">Finalizado</span></div><div class="barra-contenedor"><div class="barra-progreso"></div></div></div></div>
+<!-- RESUMEN -->
+<div class="seccion">
+<h3 class="seccion-titulo">
+<span>📊</span> Resumen
+                </h3>
+<div class="resumen-estados">
+<div class="estado-card no-iniciado">
+<div class="estado-icono-card">⏸</div>
+<div class="estado-numero">1</div>
+<div class="estado-label-card">No iniciado</div>
+</div>
+<div class="estado-card iniciado">
+<div class="estado-icono-card">🔧</div>
+<div class="estado-numero">0</div>
+<div class="estado-label-card">Iniciado</div>
+</div>
+<div class="estado-card en-ejecucion">
+<div class="estado-icono-card">💧</div>
+<div class="estado-numero">7</div>
+<div class="estado-label-card">En ejecución</div>
+</div>
+<div class="estado-card finalizado">
+<div class="estado-icono-card">🛡</div>
+<div class="estado-numero">8</div>
+<div class="estado-label-card">Finalizado</div>
+</div>
+</div>
+</div>
+<a class="btn-fotos" href="https://drive.google.com/drive/folders/19D-3UpMB2XX2Ax8u1V9QtOW1n-1WaIOn?usp=sharing" target="_blank">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="3"></rect>
+<circle cx="8.5" cy="8.5" r="1.5"></circle>
+<polyline points="21 15 16 10 5 21"></polyline>
+</svg>
+                Ver Fotos de la Obra
+            </a>
+</div>
+<div class="footer">
+<div class="footer-brand">IMPERA · Impermeabilizaciones y Rehabilitación</div>
+<div class="footer-contacto">
+                📞 982 55 77 73 · 📧 <a href="mailto:info@impera.es">info@impera.es</a>
+</div>
+</div>
+</div>
+</body>
+</html>
