@@ -308,7 +308,7 @@
         }
         
         /* No iniciado: barra vacía */
-        .tarea[data-estado="no-iniciado"] .barra-progreso {
+        .tarea[data-estado="finalizado"] .barra-progreso {
             width: 0%;
             background: transparent;
         }
@@ -437,15 +437,15 @@
                 <h2>Estado de la Obra</h2>
                 
                 <!-- Cambiar la clase según el estado: no-iniciado / iniciado / en-ejecucion / finalizado -->
-                <div class="estado-badge-grande no-iniciado">
-                    <span class="estado-icono-grande">⏳</span>
-                    <span>No iniciado</span>
+                <div class="estado-badge-grande finalizado">
+                    <span class="estado-icono-grande">✅</span>
+                    <span>Finalizado</span>
                 </div>
                 
                 <div class="fecha-actualizacion">
                     <span class="fecha-icono">🔄</span>
                     <span class="fecha-label">Última actualización:</span>
-                    <span class="fecha-valor">11 de febrero de 2026</span>
+                    <span class="fecha-valor">24 de marzo de 2026</span>
                 </div>
             </div>
             
@@ -456,30 +456,30 @@
                 </h3>
                 
                 
-                <div class="tarea" data-estado="no-iniciado">
+                <div class="tarea" data-estado="finalizado">
                     <div class="tarea-header">
                         <span class="tarea-nombre">VIVIENDA 1ºD</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado finalizado">Finalizado</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
                     </div>
                 </div>
 
-                <div class="tarea" data-estado="no-iniciado">
+                <div class="tarea" data-estado="finalizado">
                     <div class="tarea-header">
                         <span class="tarea-nombre">VIVIENDA 4ºA</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado finalizado">Finalizado</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
                     </div>
                 </div>
 
-                <div class="tarea" data-estado="no-iniciado">
+                <div class="tarea" data-estado="finalizado">
                     <div class="tarea-header">
                         <span class="tarea-nombre">GARAJES</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado finalizado">Finalizado</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
