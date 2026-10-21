@@ -308,7 +308,7 @@
         }
 
         /* No iniciado: barra vacía */
-        .tarea[data-estado="no-iniciado"] .barra-progreso {
+        .tarea[data-estado="en-ejecucion"] .barra-progreso {
             width: 0%;
             background: transparent;
         }
@@ -442,15 +442,15 @@
                 <h2>Estado de la Obra</h2>
 
                 <!-- Cambiar la clase según el estado: no-iniciado / iniciado / en-ejecucion / finalizado -->
-                <div class="estado-badge-grande no-iniciado">
-                    <span class="estado-icono-grande">⏸️</span>
-                    <span>No iniciado</span>
+                <div class="estado-badge-grande en-ejecucion">
+                    <span class="estado-icono-grande">🔨</span>
+                    <span>En ejecución</span>
                 </div>
 
                 <div class="fecha-actualizacion">
                     <span class="fecha-icono">🔄</span>
                     <span class="fecha-label">Última actualización:</span>
-                    <span class="fecha-valor">25 de agosto de 2026</span>
+                    <span class="fecha-valor">21 de octubre de 2026</span>
                 </div>
             </div>
 
@@ -460,10 +460,10 @@
                     <span>📍</span> Capítulo 1: Implantación de Obra
                 </h3>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="finalizado">
                     <div class="tarea-header">
                         <span class="tarea-nombre">1.1 Medios auxiliares</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado finalizado">Finalizado</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
@@ -476,30 +476,30 @@
                     <span>📍</span> Capítulo 2: Demoliciones
                 </h3>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="finalizado">
                     <div class="tarea-header">
                         <span class="tarea-nombre">2.1 Demolición cobertura</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado finalizado">Finalizado</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
                     </div>
                 </div>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="finalizado">
                     <div class="tarea-header">
                         <span class="tarea-nombre">2.2 Demolición Forjado</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado finalizado">Finalizado</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
                     </div>
                 </div>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="finalizado">
                     <div class="tarea-header">
                         <span class="tarea-nombre">2.3 Demolición Fábrica de ladrillo</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado finalizado">Finalizado</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
@@ -512,30 +512,30 @@
                     <span>📍</span> Capítulo 3: Estructura
                 </h3>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="finalizado">
                     <div class="tarea-header">
                         <span class="tarea-nombre">3.1 Estructura fábrica de ladrillo</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado finalizado">Finalizado</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
                     </div>
                 </div>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="finalizado">
                     <div class="tarea-header">
                         <span class="tarea-nombre">3.2 Zuncho</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado finalizado">Finalizado</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
                     </div>
                 </div>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="finalizado">
                     <div class="tarea-header">
                         <span class="tarea-nombre">3.3 Estructura acero</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado finalizado">Finalizado</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
@@ -548,40 +548,40 @@
                     <span>📍</span> Capítulo 4: Cubierta y Acabados
                 </h3>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="en-ejecucion">
                     <div class="tarea-header">
                         <span class="tarea-nombre">4.1 Cubierta</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado en-ejecucion">En ejecución</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
                     </div>
                 </div>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="en-ejecucion">
                     <div class="tarea-header">
                         <span class="tarea-nombre">4.2 Perfil aluminio</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado en-ejecucion">En ejecución</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
                     </div>
                 </div>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="en-ejecucion">
                     <div class="tarea-header">
                         <span class="tarea-nombre">4.3 Canalón</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado en-ejecucion">En ejecución</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
                     </div>
                 </div>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="en-ejecucion">
                     <div class="tarea-header">
                         <span class="tarea-nombre">4.4 Bajante</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado en-ejecucion">En ejecución</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
@@ -594,20 +594,20 @@
                     <span>📍</span> Capítulo 5: Gestión de Residuos
                 </h3>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="en-ejecucion">
                     <div class="tarea-header">
                         <span class="tarea-nombre">5.1 Transporte</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado en-ejecucion">En ejecución</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
                     </div>
                 </div>
 
-                <div class="tarea subpartida" data-estado="no-iniciado">
+                <div class="tarea subpartida" data-estado="en-ejecucion">
                     <div class="tarea-header">
                         <span class="tarea-nombre">5.2 Canon</span>
-                        <span class="tarea-estado no-iniciado">No iniciado</span>
+                        <span class="tarea-estado en-ejecucion">En ejecución</span>
                     </div>
                     <div class="barra-contenedor">
                         <div class="barra-progreso"></div>
@@ -615,7 +615,7 @@
                 </div>
             </div>
 
-            <a href="https://drive.google.com/drive/folders/1x2VjJpcXDqy5m1haqPtZM6vFignTYiBX?usp=sharing" class="btn-fotos" target="_blank">
+            <a href="https://drive.google.com/drive/folders/1Gdz0ArdhTYMvjEWaUhSF6_ZyrULLywhH?usp=sharing" class="btn-fotos" target="_blank">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
                     <circle cx="8.5" cy="8.5" r="1.5"/>
